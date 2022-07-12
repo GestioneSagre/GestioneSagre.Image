@@ -47,7 +47,7 @@ public class MyClass
 
   public async Task UploadImageAsync(InputModel model)
   {
-    //pathImage gets the path to the image (e.g. /images/foto-1.jpg)
+    //pathImage gets the path to the image (e.g. /images/7c9e6679-7425-40de-944b-e07fc1f90ae7.jpg)
     string pathImage = await imagePersister.SaveImageAsync(imageName, imageExtension, imagePath, formFile);
 
     await dbContext.SaveChangesAsync();
