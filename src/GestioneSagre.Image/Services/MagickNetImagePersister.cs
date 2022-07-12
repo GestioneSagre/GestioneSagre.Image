@@ -19,17 +19,14 @@ public class MagickNetImagePersister : IImagePersister
         this.env = env;
     }
 
-    public async Task<string> SaveImageAsync(string ImageName, string ImageExtension, string ImagePath, IFormFile formFile)
+    public async Task<string> SaveImageAsync(string imageName, string imageExtension, string imagePath, IFormFile formFile)
     {
         await semaphore.WaitAsync();
 
         try
         {
-            //string path = $"/images/festa-{festaId}.jpg";
-            string path = $"/{ImagePath}/{ImageName}.{ImageExtension}";
-
-            //string physicalPath = Path.Combine(env.ContentRootPath, "images", $"festa-{festaId}.jpg");
-            string physicalPath = Path.Combine(env.ContentRootPath, ImagePath, $"{ImageName}.{ImageExtension}");
+            string path = $"/{imagePath}/{imageName}.{imageExtension}";
+            string physicalPath = Path.Combine(env.ContentRootPath, imagePath, $"{imageName}.{imageExtension}");
 
             if (!Directory.Exists(Path.GetDirectoryName(physicalPath)))
             {
