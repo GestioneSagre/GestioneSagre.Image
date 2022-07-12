@@ -8,7 +8,6 @@ namespace GestioneSagre.Image.Services;
 public class MagickNetImagePersister : IImagePersister
 {
     private readonly IHostingEnvironment env;
-
     private readonly SemaphoreSlim semaphore;
 
     public MagickNetImagePersister(IHostingEnvironment env)
@@ -20,14 +19,17 @@ public class MagickNetImagePersister : IImagePersister
         this.env = env;
     }
 
-    public async Task<string> SaveLogoAsync(int festaId, IFormFile formFile)
+    public async Task<string> SaveImageAsync(string ImageName, string ImageExtension, string ImagePath, IFormFile formFile)
     {
         await semaphore.WaitAsync();
 
         try
         {
-            string path = $"/images/festa-{festaId}.jpg";
-            string physicalPath = Path.Combine(env.ContentRootPath, "images", $"festa-{festaId}.jpg");
+            //string path = $"/images/festa-{festaId}.jpg";
+            string path = $"/{ImagePath}/{ImageName}.{ImageExtension}";
+
+            //string physicalPath = Path.Combine(env.ContentRootPath, "images", $"festa-{festaId}.jpg");
+            string physicalPath = Path.Combine(env.ContentRootPath, ImagePath, $"{ImageName}.{ImageExtension}");
 
             if (!Directory.Exists(Path.GetDirectoryName(physicalPath)))
             {

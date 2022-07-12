@@ -12,10 +12,14 @@ public class InsecureImagePersister : IImagePersister
         this.env = env;
     }
 
-    public async Task<string> SaveLogoAsync(int festaId, IFormFile formFile)
+    public async Task<string> SaveImageAsync(string ImageName, string ImageExtension, string ImagePath, IFormFile formFile)
     {
-        var path = $"/images/festa-{festaId}.jpg";
-        var physicalPath = Path.Combine(env.WebRootPath, "images", $"festa-{festaId}.jpg");
+        //var path = $"/images/festa-{festaId}.jpg";
+        var path = $"/{ImagePath}/{ImageName}.{ImageExtension}";
+
+        //var physicalPath = Path.Combine(env.WebRootPath, "images", $"festa-{festaId}.jpg");
+        var physicalPath = Path.Combine(env.WebRootPath, ImagePath, $"{ImageName}.{ImageExtension}");
+
         using var fileStream = File.OpenWrite(physicalPath);
 
         await formFile.CopyToAsync(fileStream);
