@@ -21,13 +21,11 @@ An example of how to invoke the SaveImageAsync method
 *Model example*
 
 ```
-using SequentialGuid;
-
 namespace MyProject;
 
 public class InputModel
 {
-  public string imageName { get; set; } = SequentialGuidGenerator.Instance.NewGuid().ToString();
+  public string imageName { get; set; } = "7c9e6679-7425-40de-944b-e07fc1f90ae7";
   public string imageExtension { get; set; } = "jpg";
   public string imagePath { get; set; } = "images";
   public IFormFile formFile { get; set; }
