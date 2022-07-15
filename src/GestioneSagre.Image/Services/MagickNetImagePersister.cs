@@ -7,10 +7,10 @@ namespace GestioneSagre.Image.Services;
 
 public class MagickNetImagePersister : IImagePersister
 {
-    private readonly IHostingEnvironment env;
+    private readonly IWebHostEnvironment env;
     private readonly SemaphoreSlim semaphore;
 
-    public MagickNetImagePersister(IHostingEnvironment env)
+    public MagickNetImagePersister(IWebHostEnvironment env)
     {
         ResourceLimits.Height = 4000;
         ResourceLimits.Width = 4000;
