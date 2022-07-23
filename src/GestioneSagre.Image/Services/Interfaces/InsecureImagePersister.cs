@@ -5,9 +5,9 @@ namespace GestioneSagre.Image.Services.Interfaces;
 
 public class InsecureImagePersister : IImagePersister
 {
-    private readonly IHostingEnvironment env;
+    private readonly IWebHostEnvironment env;
 
-    public InsecureImagePersister(IHostingEnvironment env)
+    public InsecureImagePersister(IWebHostEnvironment env)
     {
         this.env = env;
     }
